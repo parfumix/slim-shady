@@ -69,3 +69,12 @@ function public_path() {
     return path('public');
 }
 
+/**
+ * Get public path .
+ *
+ * @return mixed
+ */
+function assets_path() {
+    return path('assets');
+}
+

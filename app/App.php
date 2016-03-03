@@ -61,7 +61,7 @@ class App extends \Slim\App {
     protected function registerPaths(array $paths = []) {
         $collection = (new Collection);
 
-        foreach (array_merge(['public', 'bootstrap', 'config', 'app'], $paths) as $path)
+        foreach (array_merge(['public', 'bootstrap', 'config', 'app', 'assets'], $paths) as $path)
             $collection->set($path, realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $path));
 
         ioc('paths', $collection);

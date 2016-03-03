@@ -5,7 +5,7 @@ namespace App\Services;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
-class RouteProvider extends AbstractProvider implements ServiceProviderInterface {
+class RouteProvider implements ServiceProviderInterface {
 
     /**
      * Registers services on the given container.
@@ -16,8 +16,6 @@ class RouteProvider extends AbstractProvider implements ServiceProviderInterface
      * @param Container $pimple A container instance
      */
     public function register(Container $pimple) {
-        $app = $this->getApp();
-
-        require_once APP_PATH . 'Http/routes.php';
+        require_once app_path() . DIRECTORY_SEPARATOR . 'Http/routes.php';
     }
 }

@@ -1,12 +1,15 @@
 <?php
 
-require_once 'constants.php';
-
-$config = require_once CONFIG_PATH . 'app.php';
-
-$app = new \Slim\App;
-
-foreach ($config['providers'] as $provider)
-    $app->getContainer()->register(new $provider($app));
+/*
+|--------------------------------------------------------------------------
+| Create new application
+|--------------------------------------------------------------------------
+| To create new application you have to create new instance of \App\App and pass to the arguments
+|   config file directory .
+|
+*/
+$app = new App\App(
+    require_once __DIR__ . '/../config/app.php'
+);
 
 $app->run();

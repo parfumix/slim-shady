@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Autoloaded Service Providers
+    | Autoladed Service Providers
     |--------------------------------------------------------------------------
     |
     | The service providers listed here will be automatically loaded on the
@@ -13,6 +13,7 @@ return [
     |
     */
     'providers' => [
-        \App\Services\RouteProvider::class
+        \App\Services\RouteProvider::class,
+        \App\Services\SpotProvider::class
     ]
 ];

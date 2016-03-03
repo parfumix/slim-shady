@@ -32,6 +32,20 @@ function app($method = null) {
     return App\App::getInstance();
 }
 
+
+/**
+ * Get instance View
+ * @param null $template
+ * @param array $args
+ * @return mixed
+ */
+function view($template = null, array $args = array()) {
+    if(is_null($template))
+        return ioc('view');
+
+    return ioc('view')->make($template, $args);
+}
+
 /**
  * Get path .
  *

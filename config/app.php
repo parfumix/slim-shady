@@ -13,7 +13,23 @@ return [
     |
     */
     'providers' => [
-        \App\Services\RouteProvider::class,
-        \App\Services\SpotProvider::class
+        \App\Providers\RouteProvider::class,
+        \App\Providers\SpotProvider::class,
+        \App\Providers\ClimateProvider::class,
+        \App\Providers\TemplateProvider::class
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | View Template Engine
+    |--------------------------------------------------------------------------
+    |   SetUp template view paths .
+    |
+    */
+    'view' => [
+        'paths' => [
+            __DIR__ . '/../assets/templates'
+        ]
     ]
 ];

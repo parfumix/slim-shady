@@ -2,7 +2,16 @@
 
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | Debugging
+    |--------------------------------------------------------------------------
+    |
+    | The service allow you to enable / disable debugging .
+    |
+    */
     'displayErrorDetails' => true,
+
     /*
     |--------------------------------------------------------------------------
     | Autoladed Service Providers
@@ -16,11 +25,11 @@ return [
     'providers' => [
         \App\Providers\RouteProvider::class,
         \App\Providers\DotEnvProvider::class,
+        \App\Providers\CacheProvider::class,
         \App\Providers\SpotProvider::class,
         \App\Providers\ClimateProvider::class,
         \App\Providers\TemplateProvider::class
     ],
-
 
     /*
     |--------------------------------------------------------------------------

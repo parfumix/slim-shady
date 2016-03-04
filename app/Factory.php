@@ -14,7 +14,9 @@ class Factory extends App {
     public function __construct($args) {
         $args = is_array($args) ? $args : include_once $args;
 
-        parent::__construct(['settings' => $args]);
+        parent::__construct(
+            ['settings' => $args]
+        );
 
         $this->setInstance($this);
 

@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Slim\Collection;
+use Slim\{App, Collection};
 
-class App extends \Slim\App {
+class Factory extends App {
 
     /**
      * @var
@@ -12,8 +12,7 @@ class App extends \Slim\App {
     public static $instance;
 
     public function __construct($args) {
-        if( is_string($args) )
-            $args = include_once $args;
+        $args = is_array($args) ? $args : include_once $args;
 
         parent::__construct(['settings' => $args]);
 

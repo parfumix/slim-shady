@@ -21,7 +21,7 @@ class TemplateProvider implements ServiceProviderInterface {
         $view = $pimple['settings']->get('view', []);
 
         $engine = new Engine(
-            array_pop($view['paths'])
+            array_pop($view['paths']), $view['extension'] ?? 'phtml'
         );
 
         foreach($view['paths'] as $alias =>  $path)

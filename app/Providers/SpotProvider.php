@@ -28,7 +28,7 @@ class SpotProvider implements ServiceProviderInterface {
 
         $spot = new Locator($cfg);
 
-        $pimple['database'] = $spot;
+        $pimple['db'] = $spot;
 
         return $this;
     }

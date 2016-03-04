@@ -17,9 +17,8 @@ class CacheProvider implements ServiceProviderInterface {
      * @return $this
      */
     public function register(Container $pimple) {
-        $pimple['cache'] = function () {
-            return new \Slim\HttpCache\CacheProvider();
-        };
+        (new \Slim\HttpCache\CacheProvider())
+            ->register($pimple);
 
         return $this;
     }

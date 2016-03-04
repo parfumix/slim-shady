@@ -5,7 +5,7 @@ namespace App\Providers;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
-class CacheProvider implements ServiceProviderInterface {
+class HttpCacheProvider implements ServiceProviderInterface {
 
     /**
      * Registers services on the given container.

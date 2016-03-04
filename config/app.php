@@ -25,7 +25,7 @@ return [
     'providers' => [
         \App\Providers\RouteProvider::class,
         \App\Providers\DotEnvProvider::class,
-        \App\Providers\CacheProvider::class,
+        \App\Providers\HttpCacheProvider::class,
         \App\Providers\SpotProvider::class,
         \App\Providers\ClimateProvider::class,
         \App\Providers\TemplateProvider::class
@@ -39,6 +39,7 @@ return [
     |
     */
     'view' => [
+        'extension'=> 'phtml',
         'paths' => [
             __DIR__ . '/../assets/templates'
         ]

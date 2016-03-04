@@ -15,10 +15,10 @@ return [
     'connections' => [
         'default' => [
             'driver' => 'pdo_mysql',
-            'host' => 'localhost',
-            'dbname' => 'sellcode',
-            'user' => 'root',
-            'password' => '',
+            'host' => env('DB_HOST', 'localhost'),
+            'dbname' => env('DB_DATABASE', 'sellcode'),
+            'user' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
         ]
     ]
 ];

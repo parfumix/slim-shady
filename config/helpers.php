@@ -8,7 +8,7 @@
  * @return mixed
  */
 function ioc($key = null, $value = null) {
-    $app = App\App::getInstance();
+    $app = App\Factory::getInstance();
 
     if( is_null($key) )
         return $app;
@@ -23,15 +23,14 @@ function ioc($key = null, $value = null) {
  * Get instance App
  *
  * @param null $method
- * @return \App\App
+ * @return \App\Factory
  */
 function app($method = null) {
     if(! is_null($method))
-        return App\App::getInstance()->{$method}();
+        return App\Factory::getInstance()->{$method}();
 
-    return App\App::getInstance();
+    return App\Factory::getInstance();
 }
-
 
 /**
  * Get instance View
@@ -44,6 +43,17 @@ function view($template = null, array $args = array()) {
         return ioc('view');
 
     return ioc('view')->make($template, $args);
+}
+
+/**
+ * Return mapper instance .
+ *
+ * @param $entity
+ * @return mixed
+ */
+function mapper($entity) {
+    return ioc('db')
+        ->mapper($entity);
 }
 
 /**
@@ -92,3 +102,13 @@ function assets_path() {
     return path('assets');
 }
 
+/**
+ * Return env by key .
+ *
+ * @param $key
+ * @param null $default
+ * @return null|string
+ */
+function env($key, $default = null) {
+    return getenv($key) ?? $default;
+}

@@ -19,7 +19,7 @@ class SpotProvider implements ServiceProviderInterface {
      * @return $this
      */
     public function register(Container $pimple) {
-        $database = require_once config_path() . DIRECTORY_SEPARATOR . 'database.php';
+        $database = load_config('database.php');
 
         $cfg = new Config();
 

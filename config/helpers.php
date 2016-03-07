@@ -112,3 +112,14 @@ function assets_path() {
 function env($key, $default = null) {
     return getenv($key) ?? $default;
 }
+
+/**
+ * Load config file .
+ *
+ * @param $filename
+ * @return mixed
+ */
+function load_config($filename) {
+    if( file_exists(config_path() . DIRECTORY_SEPARATOR . $filename) )
+        return include config_path() . DIRECTORY_SEPARATOR . $filename;
+}

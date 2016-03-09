@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ConsoleAble;
+
 class Kernel {
 
     /**
@@ -23,24 +25,28 @@ class Kernel {
 
     /**
      * Run console command .
-     *
-     * @param $command
      * @return mixed
-     * @throws ConsoleException
+     * @internal param $command
      */
     public function run() {
-        $command = array_shift($this->args);
+        try {
+            $command = array_shift($this->args);
 
-        if(! isset($this->commands[$command]))
-            throw new ConsoleException('Invalid command');
+            if(! isset($this->commands[$command]))
+                throw new \Exception('Invalid command');
 
-        $resolver = new $this->commands[$command]();
+            $resolver = new $this->commands[$command]();
 
-        if(! $resolver instanceof ConsoleAble)
-            throw new ConsoleException('Invalid command class.');
+            if(! $resolver instanceof ConsoleAble)
+                throw new \Exception('Invalid command class.');
 
-        return $resolver->run(
-            $this->args
-        );
+            return $resolver->run(
+                $this->args
+            );
+        } catch(\Exception $e) {
+            return cli_write_error(
+                $e->getMessage()
+            );
+        }
     }
 }

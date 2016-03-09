@@ -2,17 +2,16 @@
 
 namespace App\Console\Commands;
 
-use App\Console\ConsoleAble;
-
-class Migrate implements ConsoleAble {
+class Migrate extends Command {
 
     /**
      * Run command .
      *
      * @param array $args
      * @return mixed
+     * @throws ConsoleException
      */
-    public function run(array $args) {
-        // TODO: Implement run() method.
+    public function handle(array $args) {
+        throw new ConsoleException('aaa');
     }
 }

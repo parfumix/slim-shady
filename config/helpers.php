@@ -124,6 +124,7 @@ function load_config($filename) {
         return include config_path() . DIRECTORY_SEPARATOR . $filename;
 }
 
+
 /**
  * Check if cli mode .
  *
@@ -131,4 +132,40 @@ function load_config($filename) {
  */
 function is_cli_mode() {
     return php_sapi_name() == 'cli';
+}
+
+/**
+ * Write cli success message .
+ *
+ * @param $message
+ * @return mixed
+ */
+function cli_write_success($message) {
+    $climate = ioc('climate');
+
+    return $climate->comment($message);
+}
+
+/**
+ * Write cli info message .
+ *
+ * @param $message
+ * @return mixed
+ */
+function cli_write_info($message) {
+    $climate = ioc('climate');
+
+    return $climate->info($message);
+}
+
+/**
+ * Write cli error message .
+ *
+ * @param $message
+ * @return mixed
+ */
+function cli_write_error($message) {
+    $climate = ioc('climate');
+
+    return $climate->error($message);
 }

@@ -123,3 +123,12 @@ function load_config($filename) {
     if( file_exists(config_path() . DIRECTORY_SEPARATOR . $filename) )
         return include config_path() . DIRECTORY_SEPARATOR . $filename;
 }
+
+/**
+ * Check if cli mode .
+ *
+ * @return bool
+ */
+function is_cli_mode() {
+    return PHP_SAPI == 'cli';
+}

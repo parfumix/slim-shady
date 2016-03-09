@@ -130,5 +130,5 @@ function load_config($filename) {
  * @return bool
  */
 function is_cli_mode() {
-    return PHP_SAPI == 'cli';
+    return php_sapi_name() == 'cli';
 }

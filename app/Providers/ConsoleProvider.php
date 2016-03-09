@@ -19,7 +19,7 @@ class ConsoleProvider implements ServiceProviderInterface {
      * @return $this
      */
     public function register(Container $pimple) {
-        ioc('formatter', new CLImate());
+        ioc('formatter', (new CLImate));
 
         ioc('console', function() use($pimple) {
             return new Kernel(

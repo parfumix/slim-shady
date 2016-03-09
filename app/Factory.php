@@ -5,6 +5,8 @@ namespace App;
 use Slim\{
     App, Collection
 };
+use App\Providers\ConsoleProvider;
+use Pimple\ServiceProviderInterface;
 
 class Factory extends App {
 
@@ -81,6 +83,18 @@ class Factory extends App {
     }
 
     /**
+     * @param ServiceProviderInterface $provider
+     * @return $this
+     */
+    protected function register($provider) {
+        $this->getContainer()->register(
+            new $provider
+        );
+
+        return $this;
+    }
+
+    /**
      * Register providers .
      *
      * @param array $providers
@@ -88,9 +102,7 @@ class Factory extends App {
      */
     protected function registerProviders(array $providers = array()) {
         foreach ($providers as $provider)
-            $this->getContainer()->register(
-                new $provider
-            );
+            $this->register($provider);
 
         return $this;
     }
@@ -103,7 +115,10 @@ class Factory extends App {
      */
     public function run($silent = false) {
         if( is_cli_mode() ) {
-            return 1;
+            $this->register(ConsoleProvider::class);
+
+            return ioc('console')
+                ->run();
         }
 
         return parent::run($silent);

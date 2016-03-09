@@ -2,11 +2,13 @@
     "require": {
        "slim/slim": "^3.0",
         "vlucas/spot2": "~2.0",
-        "league/climate": "^3.2",
         "league/plates": "^3.1",
         "vlucas/phpdotenv": "^2.2",
         "slim/http-cache": "^0.3.0",
         "league/flysystem": "^1.0"
+    },
+    "require-dev": {
+      "league/climate": "^3.2"
     },
     "autoload": {
         "psr-4" : {

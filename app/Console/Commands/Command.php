@@ -2,9 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Console\ConsoleAble;
-use App\Console\ConsoleException;
-
 abstract class Command implements ConsoleAble {
 
     /**

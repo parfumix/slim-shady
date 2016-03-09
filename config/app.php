@@ -1,6 +1,6 @@
 <?php
 
-use App\Console\Commands\Migrate;
+use App\Console\Commands\{Migrate, Seed};
 
 return [
 
@@ -42,7 +42,8 @@ return [
     |
     */
     'commands' => [
-        'db:migrate' => Migrate::class
+        'db:migrate' => Migrate::class,
+        'db:seed' => Seed::class
     ],
 
     /*

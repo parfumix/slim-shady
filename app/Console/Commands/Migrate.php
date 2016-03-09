@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Entity\File;
 use App\Entity\User;
 
 class Migrate extends Command {
@@ -41,8 +40,7 @@ class Migrate extends Command {
      */
     protected function getEntities() {
         return [
-            User::class,
-            File::class
+            User::class
         ];
     }
 }

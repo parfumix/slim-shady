@@ -29,7 +29,6 @@ return [
         \App\Providers\DotEnvProvider::class,
         \App\Providers\HttpCacheProvider::class,
         \App\Providers\SpotProvider::class,
-        \App\Providers\ClimateProvider::class,
         \App\Providers\TemplateProvider::class,
         \App\Providers\FlySystemProvider::class
     ],

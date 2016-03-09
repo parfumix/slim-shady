@@ -10,17 +10,20 @@ class Kernel {
      * @var array
      */
     private $commands;
+    private $formatter;
 
     /**
      * Kernel constructor.
      * @param array $commands
      * @param array $args
+     * @param $formatter
      */
-    public function __construct(array $commands, array $args) {
+    public function __construct(array $commands, array $args, $formatter) {
         array_shift($args);
 
         $this->args = $args;
         $this->commands = $commands;
+        $this->formatter = $formatter;
     }
 
     /**
@@ -35,7 +38,9 @@ class Kernel {
             if(! isset($this->commands[$command]))
                 throw new \Exception('Invalid command');
 
-            $resolver = new $this->commands[$command]();
+            $resolver = new $this->commands[$command](
+                $this->formatter
+            );
 
             if(! $resolver instanceof ConsoleAble)
                 throw new \Exception('Invalid command class.');

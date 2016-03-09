@@ -141,7 +141,7 @@ function is_cli_mode() {
  * @return mixed
  */
 function cli_write_success($message) {
-    $climate = ioc('climate');
+    $climate = ioc('formatter');
 
     return $climate->comment($message);
 }
@@ -153,7 +153,7 @@ function cli_write_success($message) {
  * @return mixed
  */
 function cli_write_info($message) {
-    $climate = ioc('climate');
+    $climate = ioc('formatter');
 
     return $climate->info($message);
 }
@@ -165,7 +165,7 @@ function cli_write_info($message) {
  * @return mixed
  */
 function cli_write_error($message) {
-    $climate = ioc('climate');
+    $climate = ioc('formatter');
 
     return $climate->error($message);
 }

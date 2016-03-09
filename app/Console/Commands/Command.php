@@ -11,9 +11,10 @@ abstract class Command implements ConsoleAble {
 
     /**
      * Command constructor.
+     * @param $formatter
      */
-    public function __construct() {
-        $this->formatter = ioc('climate');
+    public function __construct($formatter) {
+        $this->formatter = $formatter;
     }
 
     /**
@@ -57,7 +58,7 @@ abstract class Command implements ConsoleAble {
      * @return mixed
      */
     public function success($message) {
-        return $this->formatter()->to('error')->red($message);
+        return cli_write_success($message);
     }
 
     /**
@@ -67,7 +68,7 @@ abstract class Command implements ConsoleAble {
      * @return mixed
      */
     public function info($message) {
-        return $this->formatter()->to('error')->red($message);
+        return cli_write_info($message);
     }
 
     /**
@@ -77,6 +78,6 @@ abstract class Command implements ConsoleAble {
      * @return mixed
      */
     public function error($message) {
-        return $this->formatter()->to('error')->red($message);
+        return cli_write_error($message);
     }
 }

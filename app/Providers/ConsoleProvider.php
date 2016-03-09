@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Console\Kernel;
+use League\CLImate\CLImate;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
@@ -18,9 +19,11 @@ class ConsoleProvider implements ServiceProviderInterface {
      * @return $this
      */
     public function register(Container $pimple) {
+        ioc('formatter', new CLImate());
+
         ioc('console', function() use($pimple) {
             return new Kernel(
-                $pimple->get('settings')['commands'] ?? [], $_SERVER['argv'] ?? []
+                $pimple->get('settings')['commands'] ?? [], $_SERVER['argv'] ?? [], ioc('formatter')
             );
         });
 

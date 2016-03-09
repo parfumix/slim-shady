@@ -18,6 +18,8 @@ class TemplateProvider implements ServiceProviderInterface {
      * @return $this
      */
     public function register(Container $pimple) {
+        if( is_cli_mode() ) return $this;
+
         $view = $pimple['settings']->get('view', []);
 
         $engine = new Engine(

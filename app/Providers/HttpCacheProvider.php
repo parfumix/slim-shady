@@ -17,6 +17,8 @@ class HttpCacheProvider implements ServiceProviderInterface {
      * @return $this
      */
     public function register(Container $pimple) {
+        if( is_cli_mode() ) return $this;
+
         (new \Slim\HttpCache\CacheProvider())
             ->register($pimple);
 

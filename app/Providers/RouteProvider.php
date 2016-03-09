@@ -14,8 +14,11 @@ class RouteProvider implements ServiceProviderInterface {
      * It should not get services.
      *
      * @param Container $pimple A container instance
+     * @return $this
      */
     public function register(Container $pimple) {
+        if( is_cli_mode() ) return $this;
+
         require_once app_path() . DIRECTORY_SEPARATOR . 'Http/routes.php';
     }
 }

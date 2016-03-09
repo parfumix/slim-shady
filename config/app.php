@@ -1,5 +1,7 @@
 <?php
 
+use App\Console\Commands\Migrate;
+
 return [
 
     /*
@@ -30,6 +32,18 @@ return [
         \App\Providers\ClimateProvider::class,
         \App\Providers\TemplateProvider::class,
         \App\Providers\FlySystemProvider::class
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Commands Register
+    |--------------------------------------------------------------------------
+    |
+    | That option allow you to register new commands .
+    |
+    */
+    'commands' => [
+        'db:migrate' => Migrate::class
     ],
 
     /*

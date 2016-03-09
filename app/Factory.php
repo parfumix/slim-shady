@@ -2,7 +2,9 @@
 
 namespace App;
 
-use Slim\{App, Collection};
+use Slim\{
+    App, Collection
+};
 
 class Factory extends App {
 
@@ -47,7 +49,7 @@ class Factory extends App {
      * @return App
      */
     public static function getInstance() {
-        if(! self::$instance)
+        if (! self::$instance)
             self::$instance = new self();
 
         return self::$instance;
@@ -91,5 +93,19 @@ class Factory extends App {
             );
 
         return $this;
+    }
+
+    /**
+     * Run application .
+     *
+     * @param bool $silent
+     * @return int
+     */
+    public function run($silent = false) {
+        if( is_cli_mode() ) {
+            return 1;
+        }
+
+        return parent::run($silent);
     }
 }

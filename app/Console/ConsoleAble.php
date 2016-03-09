@@ -10,5 +10,5 @@ interface ConsoleAble {
      * @param array $args
      * @return array|mixed
      */
-    public function run(array $args);
+    public function handle(array $args);
 }

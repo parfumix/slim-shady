@@ -167,5 +167,5 @@ function cli_write_info($message) {
 function cli_write_error($message) {
     $climate = ioc('formatter');
 
-    return $climate->error($message);
+    return $climate->to('error')->red($message);
 }

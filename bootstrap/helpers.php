@@ -124,6 +124,34 @@ function load_config($filename) {
         return include config_path() . DIRECTORY_SEPARATOR . $filename;
 }
 
+/**
+ * Adding path for route generator .
+ *
+ * @param $route
+ * @param array $params
+ * @return mixed
+ */
+function pathFor($route, array $params = array()) {
+    return ioc('router')
+        ->pathFor($route, $params);
+}
+
+
+/**
+ * Get service instance ..
+ *
+ * @param $class
+ * @return mixed
+ */
+function service($class) {
+    static $services = [];
+
+    if( ! isset($services[$class]) )
+        $services[$class] = (new $class);
+
+    return $services[$class];
+}
+
 
 /**
  * Check if cli mode .
@@ -168,4 +196,18 @@ function cli_write_error($message) {
     $climate = ioc('formatter');
 
     return $climate->to('error')->red($message);
+}
+
+
+/**
+ * Validate data .
+ *
+ * @param array $data
+ * @param array $rules
+ * @return \azi\Validator
+ */
+function validate(array $data, array $rules = array()) {
+    $validator = new azi\Validator();
+
+    return $validator->validate($data, $rules);
 }

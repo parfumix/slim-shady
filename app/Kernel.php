@@ -79,7 +79,7 @@ class Kernel extends App {
      *
      */
     protected function includeHelpers() {
-        require_once __DIR__ . DIRECTORY_SEPARATOR . '../config/helpers.php';
+        require_once __DIR__ . DIRECTORY_SEPARATOR . '../bootstrap/helpers.php';
     }
 
     /**

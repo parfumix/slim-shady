@@ -8,7 +8,7 @@
  * @return mixed
  */
 function ioc($key = null, $value = null) {
-    $app = App\Factory::getInstance();
+    $app = App\Kernel::getInstance();
 
     if( is_null($key) )
         return $app;
@@ -23,13 +23,13 @@ function ioc($key = null, $value = null) {
  * Get instance App
  *
  * @param null $method
- * @return \App\Factory
+ * @return \App\Kernel
  */
 function app($method = null) {
     if(! is_null($method))
-        return App\Factory::getInstance()->{$method}();
+        return App\Kernel::getInstance()->{$method}();
 
-    return App\Factory::getInstance();
+    return App\Kernel::getInstance();
 }
 
 /**

@@ -8,7 +8,7 @@
 |   config file directory .
 |
 */
-$app = new App\Factory(
+$app = new App\Kernel(
     require_once __DIR__ . '/../config/app.php'
 );
 

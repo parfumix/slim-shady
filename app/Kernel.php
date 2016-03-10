@@ -8,7 +8,7 @@ use Slim\{
 use App\Providers\ConsoleProvider;
 use Pimple\ServiceProviderInterface;
 
-class Factory extends App {
+class Kernel extends App {
 
     /**
      * @var

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Entity\Social;
 use App\Entity\User;
 
 class Migrate extends Command {
@@ -18,7 +19,7 @@ class Migrate extends Command {
     public function handle(array $args) {
         $db = ioc('db'); $command = $this;
 
-        $entities = $this->getEntities();
+        $entities = load_config('migrations.php');
 
         array_walk($entities, function($entity) use($db, $command) {
             $db->mapper($entity)
@@ -31,16 +32,5 @@ class Migrate extends Command {
         $this->formatter->success('Migration created successfully!');
 
         return $this;
-    }
-
-    /**
-     * Get migration entities .
-     *
-     * @return array
-     */
-    protected function getEntities() {
-        return [
-            User::class
-        ];
     }
 }

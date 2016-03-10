@@ -1,8 +1,10 @@
 <?php
 
+use App\Services\UserService;
+
 $app = app();
 
-$app->get('/', function (\Slim\Http\Request $request, $response, $args) {
+$app->any('/', function (\Slim\Http\Request $request, $response, $args) {
 
 });
 
@@ -16,7 +18,18 @@ $app->group('/u', function () {
 
     })->setName('user-login');
 
-    $this->get('/register', function ($request, $response, $args) {
+    $this->map(['GET', 'POST'], '/register', function ($request, $response) {
+        if( $request->isGet() )
+            return $response->write(view('user/register')->render());
+
+        service(UserService::class)
+            ->register(
+                $request->getParams()
+            );
+
+        return $response->withRedirect(
+            pathFor('user-register')
+        );
 
     })->setName('user-register');
 
@@ -30,7 +43,21 @@ $app->group('/u', function () {
          * Upload code .
          *
          */
-        $this->get('/upload', function ($request, $response, $args) {
+        $this->map(['GET', 'POST'], '/upload', function ($request, $response, $args) {
+
+            if( $request->isPost() ) {
+                $file = $request->getUploadedFiles()['file'] ?? null;
+
+                $local = ioc('flysystem')->getFilesystem('local');
+
+                $local->writeStream(
+                    $file->getClientFilename(),
+                    $file->getStream()->stream
+                );
+//todo
+                return $response->withRedirect('/a');
+            }
+
             return $response->write(
                 view('dashboard/upload')->render()
             );

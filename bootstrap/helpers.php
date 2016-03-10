@@ -56,6 +56,7 @@ function mapper($entity) {
         ->mapper($entity);
 }
 
+
 /**
  * Get path .
  *
@@ -101,6 +102,7 @@ function public_path() {
 function assets_path() {
     return path('assets');
 }
+
 
 /**
  * Return env by key .

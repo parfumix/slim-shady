@@ -30,7 +30,8 @@ return [
         \App\Providers\HttpCacheProvider::class,
         \App\Providers\SpotProvider::class,
         \App\Providers\TemplateProvider::class,
-        \App\Providers\FlySystemProvider::class
+        \App\Providers\FlySystemProvider::class,
+        \App\Providers\SocialProvider::class,
     ],
 
     /*

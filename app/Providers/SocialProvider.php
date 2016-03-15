@@ -17,6 +17,8 @@ class SocialProvider implements ServiceProviderInterface {
      * @return $this
      */
     public function register(Container $pimple) {
+        if(! session_id()) session_start();
+
         $socials = load_config('social.php');
 
         foreach($socials as $alias => $social)

@@ -22,13 +22,14 @@ class SessionProvider implements ServiceProviderInterface {
 
         $config = load_config('session.php');
 
+        // if someone will start session before me.
         session_name($config['name'] ?? ini_get('session.name'));
 
-        $session = (new Session(
-            $config['handler'] ?? null, $config
-        ));
-
-        ioc('session', $session);
+        ioc('session', function() use($config) {
+            return (new Session(
+                $config['handler'] ?? null, $config
+            ));
+        });
 
         return $this;
     }

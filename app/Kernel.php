@@ -121,6 +121,22 @@ class Kernel extends App {
                 ->run();
         }
 
+        $this->registerMiddleware();
+
         return parent::run($silent);
+    }
+
+    /**
+     * Register middlewares .
+     *
+     * @return $this
+     */
+    protected function registerMiddleware() {
+        $middleware = $this->getContainer()->get('settings')['middleware'];
+
+        foreach($middleware as $resolver)
+            $this->add((new $resolver));
+
+        return $this;
     }
 }

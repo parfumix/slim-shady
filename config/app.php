@@ -25,6 +25,7 @@ return [
     |
     */
     'providers' => [
+        \App\Providers\SessionProvider::class,
         \App\Providers\RouteProvider::class,
         \App\Providers\DotEnvProvider::class,
         \App\Providers\HttpCacheProvider::class,
@@ -32,6 +33,15 @@ return [
         \App\Providers\TemplateProvider::class,
         \App\Providers\FlySystemProvider::class,
         \App\Providers\SocialProvider::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Middleware
+    |--------------------------------------------------------------------------
+    */
+    'middleware' => [
+        \App\Http\Middleware\AuthMiddleware::class
     ],
 
     /*

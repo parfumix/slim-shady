@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Kernel\Oauth\Capsule;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
@@ -19,12 +20,11 @@ class SocialProvider implements ServiceProviderInterface {
     public function register(Container $pimple) {
         if(! session_id()) session_start();
 
-        $socials = load_config('social.php');
-
-        foreach($socials as $alias => $social)
-            ioc($alias, function() use($social) {
-                return (new $social['resolver']($social['args']));
-            });
+        ioc('oauth', function() {
+            return (new Capsule(
+                load_config('social.php')
+            ));
+        });
 
         return $this;
     }
